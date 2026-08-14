@@ -6,7 +6,7 @@
 	  <ImplicitUsings>disable</ImplicitUsings>
 	  <Nullable>disable</Nullable>
 	  <PackageId>Hestia.Core.Web</PackageId>
-	  <Version>1.0.1</Version>
+	  <Version>1.0.2</Version>
 	  <Authors>SDuo</Authors>
 	  <PackageDescription></PackageDescription>
 	  <RepositoryUrl>https://github.com/sduo/Hestia.Core.Web</RepositoryUrl>
@@ -24,7 +24,19 @@
   <ItemGroup>
 	  <PackageReference Include="Hestia.Core" Version="1.1.6" />
 	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.12" />
-	  <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
+	  
   </ItemGroup>
+<Choose>
+	<When Condition="'$(TargetFramework)' == 'net6.0'">
+		<ItemGroup>
+			<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+		</ItemGroup>
+	</When>
+	<Otherwise>
+		<ItemGroup>
+			<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
+		</ItemGroup>
+	</Otherwise>
+</Choose>
 
 </Project>
